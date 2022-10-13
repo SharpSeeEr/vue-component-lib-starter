@@ -1,10 +1,10 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   title: 'My Lib',
   description: 'Just playing around.',
   themeConfig: {
-    repo: 'https://github.com/wuruoyun/vue-component-lib-starter',
+    repo: 'https://github.com/SharpSeeEr/vue-component-lib-starter',
     sidebar: [
       {
         text: 'Introduction',
@@ -29,4 +29,4 @@ module.exports = {
       dedupe: ['vue', /primevue\/.+/], // avoid error when using dependencies that also use Vue
     }
   }
-}
+};

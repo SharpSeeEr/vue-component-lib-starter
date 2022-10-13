@@ -1,6 +1,7 @@
 <script setup>
 import Basic from './demo/ComponentB/Basic.vue'
 </script>
+
 # Component B
 
 This component depends on third-party component library for Vue 3:

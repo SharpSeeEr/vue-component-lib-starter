@@ -1,17 +1,16 @@
-import { App } from 'vue'
-import * as components from './components'
+import { App } from 'vue';
+import * as components from './components';
 
-function install (app: App) {
-  for (const key in components) {
-    // @ts-expect-error
-    app.component(key, components[key])
-  }
+import './assets/main.css';
+
+function install(app: App) {
+  Object.keys(components).forEach((key) => {
+    app.component(key, components[key as keyof typeof components]);
+  });
 }
 
-import './assets/main.scss'
+export default { install };
 
-export default { install }
-
-export * from './components'
-export * from './constants'
-export * from './utils'
+export * from './components';
+export * from './constants';
+export * from './utils';

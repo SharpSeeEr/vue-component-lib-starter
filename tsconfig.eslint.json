@@ -1,0 +1,10 @@
+// Since eslint using @typescript-eslint/parser uses tsconfig.json to determine what to lint
+// this file is necessary to declare any files we want to lint that fall outside of our TypeScript project
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "./**/*.js",
+    "./**/*.ts",
+    "./**/*.vue",
+  ]
+}

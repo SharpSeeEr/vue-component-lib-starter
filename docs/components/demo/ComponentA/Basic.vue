@@ -1,3 +1,3 @@
 <template>
-  <ComponentA msg="World"/>
+  <ComponentA msg="World" />
 </template>

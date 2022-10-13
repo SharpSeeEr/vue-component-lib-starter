@@ -1,3 +1,3 @@
 <template>
-  <ComponentB/>
+  <ComponentB />
 </template>

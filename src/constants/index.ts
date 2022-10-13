@@ -1,5 +1,5 @@
-import * as MyConstants from './MyConstants'
+import * as MyConstants from './MyConstants';
 
 export {
-  MyConstants
-}
+  MyConstants,
+};

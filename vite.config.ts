@@ -1,9 +1,15 @@
-const path = require('path');
-const { defineConfig } = require('vite');
 import vue from '@vitejs/plugin-vue';
 
-module.exports = defineConfig({
+const path = require('path');
+const { defineConfig } = require('vite');
+
+export default defineConfig({
   plugins: [vue()], // to process SFC
+  resolve: {
+    alias: {
+      '@/': path.resolve(__dirname, './src/'),
+    },
+  },
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),

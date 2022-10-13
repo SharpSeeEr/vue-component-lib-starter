@@ -1,13 +1,14 @@
 <script setup lang="ts">
-interface Props {
+defineProps<{
   msg: string
-}
-
-const props = defineProps<Props>()
+}>();
 </script>
 
 <template>
   <div>
-    Hello {{ msg }}! <span class="icon-heart" style="color:tomato"></span>
+    Hello {{ msg }}!
+    <span
+      class="icon-heart"
+      style="color:tomato" />
   </div>
 </template>
