@@ -6,11 +6,25 @@
 
 Sooner or later, you will find that creating a component library is much better than having all components inside your app project. A component library force to you remove app specific logic from your components, making it easier to test and reuse them in other apps.
 
-Once the components are in a library, documentation becomes critical. This starter project includes a documentation app powered by VitePress. It not only documents the usage of the component, but also provides a testing bed during the development of components. See the generated documentation app [here](https://sharp-babbage-154f0a.netlify.com/).
+Once the components are in a library, documentation becomes critical. This starter project includes a documentation app powered by VitePress. It not only documents the usage of the component, but also provides a testing bed during the development of components.
+
+This starter kit includes a strict set of eslint rules
 
 ## Setup
 
-> When running `docs:dev` for the first time, you may encounter error like `vitepress data not properly injected in app` in your browser. Restart the server and reload the browser. Please refer to [issue #30](https://github.com/wuruoyun/vue-component-lib-starter/issues/30) for more details.
+Use [tiged](https://github.com/tiged/tiged) to copy the starter files into a new project.  Tiged is an up to date fork of [degit](https://github.com/Rich-Harris/degit). If tiged is not installed:
+
+```sh
+npm install -g tiged
+```
+
+Create a folder for the new project and run the following command from within that folder:
+
+```sh
+tiged https://github.com/SharpSeeEr/vue-lib-starter-upstream
+```
+
+Use the following npm scripts:
 
 ```bash
 # install dependencies
@@ -28,8 +42,6 @@ npm run docs:build
 # preview the doc app locally from docs/.vitepress/dist
 npm run docs:serve
 ```
-
-You may use [Netlify](https://www.netlify.com/) to auto build and deloy the doc app like this project does.
 
 ## Develop and test locally
 
@@ -73,7 +85,7 @@ module.exports = {
 
 The library includes example utilities and constants. They are also exported in [index.ts](src/index.ts). The client app may use them as below:
 
-```js
+```html
 <script lang="ts">
 import { MyConstants, MyUtil } from 'my-lib'
 
@@ -108,13 +120,13 @@ import 'my-lib/dist/style.css'
 
 ### Third-party dependencies
 
-Third-party libraries used by you library may bloat up the size of your library, if you simply add them to the `dependencies` in [package.json](package.json).
+Third-party libraries used by your library may bloat up the size of your library if you add them to `dependencies` in [package.json](package.json).
 
 The following are some strategies to reduce the size of your library:
 
 #### Externalization
 
-If you expect the client app of your library may also need the same dependency, you may externalize the dependency. For example, to exclude PrimeVue from your library build artifact, in [vite.config.ts](vite.config.ts), you may have
+If you expect the client app of your library may also need the same dependency, you may externalize the dependency. For example, the following excludes PrimeVue from your library build artifact in [vite.config.ts](vite.config.ts):
 
 ```js
 module.exports = defineConfig({
@@ -129,7 +141,7 @@ The dependency to be externalized may be declared as peer dependency in your lib
 
 #### Cherry picking
 
-If you don't expect the client app of your library also needing the same dependency, you may embed cherry-picked functions. For example, to embed the `fill` function of popular library [lodash](https://lodash.com), import the `fill` function like the following:
+If you don't expect the client app using your library to also need the same dependency, you may embed cherry-picked functions. For example, to embed the `fill` function of popular library [lodash](https://lodash.com), import the `fill` function like the following:
 
 ```js
 import fill from 'lodash/fill'
@@ -165,7 +177,7 @@ In [package.json](package.json), the line below locates the generated types for 
 
 #### TypeScript
 
-In [tsconfig.json](tsconfig.js), set the following as recommended by Vite (since esbuild is used). However, enableing this option leads to https://github.com/vitejs/vite/issues/5814. The workaround is to also enable `compilerOptions.skipLibCheck`.
+In [tsconfig.json](tsconfig.js), set the following as recommended by Vite (since esbuild is used). However, enableing this option leads to <https://github.com/vitejs/vite/issues/5814>. The workaround is to also enable `compilerOptions.skipLibCheck`.
 
 ```json
 "compilerOptions": {
@@ -173,7 +185,7 @@ In [tsconfig.json](tsconfig.js), set the following as recommended by Vite (since
 }
 ```
 
-In [tsconfig.json](tsconfig.js), set the following to address [Issue #32](https://github.com/wuruoyun/vue-component-lib-starter/issues/32). The solution is from https://github.com/johnsoncodehk/volar/discussions/592.
+In [tsconfig.json](tsconfig.js), set the following to address [Issue #32](https://github.com/wuruoyun/vue-component-lib-starter/issues/32). The solution is from <https://github.com/johnsoncodehk/volar/discussions/592>.
 
 ```json
 "compilerOptions": {
@@ -185,4 +197,4 @@ In [tsconfig.json](tsconfig.js), set the following to address [Issue #32](https:
 
 #### Dependencies
 
-In [package.json](package.json), Vue and PrimeVue are declared in both `peerDependencies` and `devDependencies`. The former requires the client app to add these dependencies, and the later makes it easier to setup this library by simply running `npm install`.
+In [package.json](package.json), Vue and PrimeVue are declared in both `peerDependencies` and `devDependencies`. The former requires the client app to add these dependencies, and the latter makes it easier to setup the library by simply running `npm install`.
