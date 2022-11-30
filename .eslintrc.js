@@ -52,7 +52,8 @@ module.exports = {
       ],
     }],
 
-    // airbnb-typescript/base rule overrides
+    // @typescript-eslint rule overrides
+    '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/indent': 'off',
     '@typescript-eslint/no-use-before-define': ['error', {
       functions: false,
